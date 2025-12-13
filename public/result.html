@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Result</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>BMI Calculator</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#" class="theme-switcher" data-theme="light">Light</a></li>
+            <li><a href="#" class="theme-switcher" data-theme="dark">Dark</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <article>
+            <hgroup>
+                <h1>Your BMI Result</h1>
+            </hgroup>
+            <div class="result-container">
+                <p>Your BMI is: <strong id="bmi" class="bmi-value"></strong></p>
+                <p>Category: <strong id="category" class="bmi-category"></strong></p>
+                <p>Custom Index: <strong id="customIndex"></strong></p>
+                <h3>Recommendations:</h3>
+                <ul id="recommendations">
+                </ul>
+            </div>
+            <a href="/" role="button" class="secondary">Calculate Again</a>
+        </article>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const result = JSON.parse(localStorage.getItem('bmiResult'));
+            const html = document.querySelector('html');
+
+            if (result) {
+                html.setAttribute('data-theme', result.theme || 'light');
+                document.getElementById('bmi').textContent = result.bmi;
+                document.getElementById('bmi').className = 'bmi-value ' + result.category.toLowerCase().replace(' ', '-');
+                document.getElementById('category').textContent = result.category;
+                document.getElementById('category').className = 'bmi-category ' + result.category.toLowerCase().replace(' ', '-');
+                document.getElementById('customIndex').textContent = result.customIndex;
+
+                const recommendationsList = document.getElementById('recommendations');
+                result.recommendations.forEach(rec => {
+                    const li = document.createElement('li');
+                    li.textContent = rec;
+                    recommendationsList.appendChild(li);
+                });
+            }
+
+            const themeSwitcher = document.querySelectorAll('.theme-switcher');
+            themeSwitcher.forEach(switcher => {
+                switcher.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const theme = event.target.getAttribute('data-theme');
+                    html.setAttribute('data-theme', theme);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

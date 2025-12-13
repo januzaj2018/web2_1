@@ -1,0 +1,39 @@
+/* Custom Styles */
+.error-message {
+    color: #d32f2f;
+    background-color: #ffcdd2;
+    border: 1px solid #d32f2f;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.result-container {
+    text-align: center;
+}
+
+.bmi-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.bmi-category {
+    font-size: 1.5rem;
+}
+
+.underweight {
+    color: #ffb74d; /* Orange */
+}
+
+.normal-weight {
+    color: #81c784; /* Green */
+}
+
+.overweight {
+    color: #fff176; /* Yellow */
+}
+
+.obese {
+    color: #e57373; /* Red */
+}
+
