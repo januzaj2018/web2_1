@@ -23,7 +23,6 @@
         <p class="lead">Enter your details and see results instantly on the right.</p>
 
         <div class="row">
-            <!-- Left column: inputs -->
             <div class="col-md-6">
                 <div id="error-message" class="error-message" role="alert" style="display: none;"></div>
                 <form id="bmi-form" class="card p-3">
@@ -97,7 +96,6 @@
                 if (persist) localStorage.setItem('theme', theme);
             }
 
-            // Apply saved theme on load (persisted in localStorage)
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 setTheme(savedTheme, false);
@@ -137,7 +135,7 @@
                 const formData = new FormData(bmiForm);
                 const data = Object.fromEntries(formData.entries());
 
-                // Basic validation
+
                 const w = Number(data.weight);
                 const h = Number(data.height);
                 if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) {

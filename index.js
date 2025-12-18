@@ -21,11 +21,11 @@ app.post('/calculate-bmi', (req, res) => {
         return res.status(400).json({ error: 'Please enter positive numbers for weight and height.' });
     }
 
-    // Calculate BMI as number and string
+
     const bmiNum = w / ((h / 100) * (h / 100));
     const bmi = bmiNum.toFixed(2);
 
-    // Compute custom index if fatness and muscle are provided
+
     let customIndex = null;
     let customCategory = null;
     let customRecommendations = [];
@@ -35,12 +35,7 @@ app.post('/calculate-bmi', (req, res) => {
     if (!isNaN(f) && !isNaN(m) && f > 0 && m > 0) {
         customIndex = Number(((f * m) / 100).toFixed(2));
 
-        // Map customIndex to categories based on example table
-        // Assumptions for ranges (inferred from example values):
-        // Lean Athlete: customIndex <= 5
-        // Bodybuilder: 5 < customIndex <= 6.8
-        // Average/Fit: 6.8 < customIndex <= 8
-        // Sedentary/Obese: customIndex > 8
+
         if (customIndex <= 5) {
             customCategory = 'Lean Athlete';
             customRecommendations = [
