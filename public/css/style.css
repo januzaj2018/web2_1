@@ -1,15 +1,37 @@
-/* Custom Styles */
+body {
+    background-color: var(--background-color);
+    color: var(--color);
+}
+
+nav.container-fluid {
+    background-color: var(--card-sectionning-background-color);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--card-border-color);
+}
+
+nav.container-fluid ul {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.card {
+    background-color: var(--card-background-color);
+    color: var(--color);
+}
+
+
 .error-message {
-    color: #d32f2f;
-    background-color: #ffcdd2;
-    border: 1px solid #d32f2f;
+    color: var(--del-color);
+    background-color: var(--form-element-invalid-focus-color);
+    border: 1px solid var(--form-element-invalid-border-color);
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
 }
 
 .result-container {
-    text-align: center;
+    text-align: left;
 }
 
 .bmi-value {
@@ -26,14 +48,60 @@
 }
 
 .normal-weight {
-    color: #81c784; /* Green */
+    color: #2e7d32; /* Green */
 }
 
 .overweight {
-    color: #fff176; /* Yellow */
+    color: #f9a825; /* Yellow/amber */
 }
 
 .obese {
-    color: #e57373; /* Red */
+    color: #c62828; /* Red */
 }
 
+/* Result card color-coded borders/backgrounds */
+.result-card.underweight {
+    border-left: 6px solid #ffb74d;
+    background-color: rgba(255,183,77,0.05);
+}
+
+.result-card.normal-weight {
+    border-left: 6px solid #2e7d32;
+    background-color: rgba(46,125,50,0.04);
+}
+
+.result-card.overweight {
+    border-left: 6px solid #f9a825;
+    background-color: rgba(249,168,37,0.04);
+}
+
+.result-card.obese {
+    border-left: 6px solid #c62828;
+    background-color: rgba(198,40,40,0.04);
+}
+
+html[data-theme="dark"] .result-card.underweight {
+    background-color: rgba(255,183,77,0.06);
+}
+html[data-theme="dark"] .result-card.normal-weight {
+    background-color: rgba(46,125,50,0.06);
+}
+html[data-theme="dark"] .result-card.overweight {
+    background-color: rgba(249,168,37,0.06);
+}
+html[data-theme="dark"] .result-card.obese {
+    background-color: rgba(198,40,40,0.06);
+}
+
+
+.theme-switcher.active {
+    background-color: var(--primary);
+    color: var(--primary-inverse);
+}
+
+
+@media (max-width: 767px) {
+    .result-card {
+        margin-top: 1rem;
+    }
+}
